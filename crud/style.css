@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Cantarell", sans-serif;
+}
+
+body{
+    color: #333;
+}
+
+.container{
+    width: 100%;
+    min-width: 1400px;
+    margin: 100px auto;
+}
+
+h1{
+    margin-bottom: 20px;
+}
+
+a{
+    padding : 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #fff;
+    background: #193992;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th,
+td{
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+}
+
+th{
+    text-align: left;
+}
+
+.btn-delete{
+    background: #e03131;
+    margin-left: 5px;
+}
