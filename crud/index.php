@@ -2,6 +2,8 @@
 <?php
 session_start();
 
+require 'dbcon.php';
+
 ?> 
 
 <!DOCTYPE html>
@@ -34,7 +36,7 @@ session_start();
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <td>1</td>
                     <td>Ankit</td>
                     <td>ankit@gmail.com</td>
@@ -44,7 +46,40 @@ session_start();
                         <a href="" class="btn btn-secondary">Edit</a>
                         <a href="" class="btn btn-danger">Delete</a>
                     </td>
-                </tr>
+                </tr> -->
+                <?php 
+                    $query = "SELECT * FROM `users`";
+
+                    $q_run = mysqli_query($conn,$query);
+
+                    if(mysqli_num_rows($q_run) > 0){
+
+                    foreach($q_run as $users){
+                        // echo $users['name'];
+                    ?>
+                    <tr>
+                        <td><?= $users['id'] ?></td>
+                        <td><?= $users['name'] ?></td>
+                        <td><?= $users['email'] ?></td>
+                        <td><?= $users['mobile'] ?></td>
+                        <td><?= $users['city'] ?></td>
+
+                        <td>
+                            <a href="" class="btn btn-success">View</a>
+                            <a href="edit.php?id=<?= $users['id'] ?>" class="btn btn-secondary">Edit</a>
+                            <a href="/<?= $users['id'] ?>" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+
+                <?php
+                    }
+
+                    }
+                    else{
+                        echo "<h5>No records found</h5>";
+                    }
+                    
+                ?>
             </tbody>
            </table>
         </div>
