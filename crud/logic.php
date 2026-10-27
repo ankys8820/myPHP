@@ -30,3 +30,25 @@ if(isset($_POST["save-user"])){
     }
 
 }
+
+if(isset($_POST["update-user"])){
+
+
+    $user_id = $_POST['user_id'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
+    $city = $_POST['city'];
+
+    $query = "UPDATE SET users name='$name', email='$email',   mobile='$mobile', city= '$city' WHERE id='$user_id' ";
+
+    $q_run = mysqli_query($conn, $query);
+
+    
+
+
+
+
+
+
+}
