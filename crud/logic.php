@@ -40,15 +40,37 @@ if(isset($_POST["update-user"])){
     $mobile = $_POST['mobile'];
     $city = $_POST['city'];
 
-    $query = "UPDATE SET users name='$name', email='$email',   mobile='$mobile', city= '$city' WHERE id='$user_id' ";
+    $query = "UPDATE users SET name='$name', email='$email', mobile='$mobile', city= '$city' WHERE id='$user_id'";
 
     $q_run = mysqli_query($conn, $query);
 
-    
+    if($q_run){
+        $_SESSION['message'] = "User updated successfully!";
+        header("Location: index.php");
+        exit(0);
+    }
+     else{
+        $_SESSION['message'] = "Something went wrong !";
+        header("Location: edit.php");
+        exit(0);
+    }
+}
 
+if(isset($_POST['del_user'])){
+    $user_id=$_POST['user_id'];
 
+    $query = "DELETE FROM users WHERE id='$user_id'";
 
+    $q_run = mysqli_query($conn, $query);
 
-
-
+    if($q_run){
+        $_SESSION['message'] = "User deleted successfully!";
+        header("Location: index.php");
+        exit(0);
+    }
+    else{
+        $_SESSION['message'] = "Something went wrong !";
+        header("Location: index.php");
+        exit(0);
+    }
 }

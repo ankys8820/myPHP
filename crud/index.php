@@ -16,9 +16,10 @@ require 'dbcon.php';
 
   </head>
 <body>
-    <?php include('message.php'); ?> 
+   
     
     <div class="container">
+         <?php include('message.php'); ?> 
         <h2>User Lists</h2>
         <a href="add.php" class="mb-3 btn btn-dark">Add Users</a>
 
@@ -65,9 +66,17 @@ require 'dbcon.php';
                         <td><?= $users['city'] ?></td>
 
                         <td>
-                            <a href="" class="btn btn-success">View</a>
+                            <!-- <a href="" class="btn btn-success">View</a> -->
                             <a href="edit.php?id=<?= $users['id'] ?>" class="btn btn-secondary">Edit</a>
-                            <a href="/<?= $users['id'] ?>" class="btn btn-danger">Delete</a>
+                            <!-- <a href="?id=<?= $users['id'] ?>" class="btn btn-danger">Delete</a> -->
+                             <!-- d-inline is used for display without form space -->
+                            <!-- <form action="logic.php" class="d-inline" method="POST">
+                                <button type="submit" name="del_user" value="<?= $users['id'] ?>" class="btn btn-danger">Delete</button>
+                            </form> -->
+                            <form action="logic.php" class="d-inline" method="POST">
+                              <input type="hidden" name="user_id" value="<?= $users['id'] ?>">
+                              <button type="submit" name="del_user" class="btn btn-danger"> Delete </button>
+                            </form>
                         </td>
                     </tr>
 
