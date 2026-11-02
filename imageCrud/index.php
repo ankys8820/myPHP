@@ -23,26 +23,63 @@ require('dbconfig.php');
     </button> -->
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="demo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add User Data</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    ...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                <form action="request.php" method="post" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <!-- { Code you want show = form} -->
+
+                        <div class="form-group">
+                            <label for="">First Name</label>
+                            <input type="text" name="fname" class="form-control" placeholder="FirstName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Last Name</label>
+                            <input type="text" name="lname" class="form-control" placeholder="LastName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Date</label>
+                            <input type="date" name="date" class="form-control" placeholder="Date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Image</label>
+                            <input type="file" name="image" id="images" class="form-control" placeholder="Image" required>
+                        </div>
+
+
+
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-dark">Register</button>
+                        </div>
+
+                    </div>
+                </form>
+
             </div>
         </div>
     </div>
-    <!-- ME -->
+    <!-- M_end -->
 
-    <div class=""></div>
+
+
+    <div class="container-fluid">
+        <button type="button" class="btn btn-dark"
+            data-bs-toggle="modal" data-bs-target="#demo">
+            Add Data
+        </button>
+
+    </div>
 
 
 

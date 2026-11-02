@@ -1,4 +1,60 @@
+CREATE DATABASE myphp;
 
-CREATE DATABASE myPHP;
+USE myphp;
 
-USE myPHP;
+CREATE TABLE users(
+id INT PRIMARY KEY AUTO_INCREMENT,
+fname VARCHAR(255) NOT NULL,
+lname VARCHAR(255) NOT NULL,
+dOB DATE NOT NULL,
+image VARCHAR(255) NOT NULL
+);
+
+SHOW TABLES;
+
+DESC users;
+
+DROP TABLE users;
+
+CREATE TABLE auth(
+
+id INT PRIMARY KEY AUTO_INCREMENT,
+username VARCHAR(255) NOT NULL,
+email VARCHAR(255) NOT NULL UNIQUE,
+password VARCHAR(255) NOT NULL
+);
+
+
+DESC auth;
+
+SELECT * FROM auth;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
