@@ -1,6 +1,7 @@
 <?php
 
 require 'dbconfig.php';
+session_start();
 
 if (isset($_POST['signup'])) {
 
@@ -15,7 +16,7 @@ if (isset($_POST['signup'])) {
     // echo "</br>";
     // echo "Password :" . $password;
 
-    $query = "INSERT INTO `auth` (`username`,`email`,`password`) VALUES ('$uname','$email','$password')";
+    $query = "INSERT INTO `users` (`username`,`email`,`password`) VALUES ('$uname','$email','$password')";
 
     $q_run = mysqli_query($conn, $query);
 
@@ -33,8 +34,30 @@ if (isset($_POST['signin'])) {
     $email = $_POST['email'];
     $password = sha1($_POST['password']);
 
-    // echo "email :" . $email;
-    // echo "</br>";
-    // echo "Password :" . $password;
+    echo "email :" . $email;
+    echo "</br>";
+    echo "Password :" . $password;
 
+    $sql = "SELECT id,username,email,is_Admin FROM users WHERE email = '$email' AND password='$password'";
+
+    // // die();
+
+    $res = mysqli_query($conn, $sql) or die("Query Failed!");
+
+    if (mysqli_num_rows($res) > 0) {
+
+        while ($row = mysqli_fetch_assoc($res)) {
+            $_SESSION['id'] = $row['id'];
+            $_SESSION['username'] = $row['username'];
+            $_SESSION['email'] = $row['email'];
+            $_SESSION['is_Admin'] = $row['is_Admin'];
+
+            header('Location: index.php');
+            exit();
+
+            // echo $_SESSION['username'];
+        }
+    } else {
+        echo '<div>Invalid Credentials.</div>';
+    }
 }
