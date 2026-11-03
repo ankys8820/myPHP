@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header('Location: index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +20,7 @@
     <h2>Login User</h2>
 
     <div>
-        <form action="" method="post">
+        <form action="request.php" method="post">
 
             <input type="email" name="email" placeholder="email" required>
             <input type="password" name="password" placeholder="password" required>

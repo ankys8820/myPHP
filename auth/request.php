@@ -34,13 +34,17 @@ if (isset($_POST['signin'])) {
     $email = $_POST['email'];
     $password = sha1($_POST['password']);
 
-    echo "email :" . $email;
-    echo "</br>";
-    echo "Password :" . $password;
+    // echo "email : " . $email;
+    // echo "</br>";
+    // echo "Password :" . $password;
+
+    // echo "Loging Pressed";
+
+    // echo "</br>";
 
     $sql = "SELECT id,username,email,is_Admin FROM users WHERE email = '$email' AND password='$password'";
 
-    // // die();
+
 
     $res = mysqli_query($conn, $sql) or die("Query Failed!");
 
@@ -60,4 +64,11 @@ if (isset($_POST['signin'])) {
     } else {
         echo '<div>Invalid Credentials.</div>';
     }
+}
+
+if (isset($_POST['logout'])) {
+    // echo "Logout pressed";
+    session_unset();
+    session_destroy();
+    header('Location: signin.php');
 }
